@@ -1,4 +1,5 @@
 import {Link,useParams} from 'react-router-dom';
+import ThemeTest from '../component/testTheme.js'
 function Tmp() {
   const {sid} =useParams();
   return (
@@ -14,6 +15,7 @@ function Tmp() {
           <div>
             <Link to="/tmp/3">3</Link>
         </div>
+        <div><ThemeTest/></div>
        </div>
     </>
   );

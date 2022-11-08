@@ -3,13 +3,11 @@ function Navbar () {
   const location = useLocation();
   const seg1 = location.pathname.split('/')[1];
   console.log(seg1);
-  const actives = {
-    'list': 'nav-link ',
-    'tmp':'nav-link '
-  }
-  if(actives[seg1]){
-    actives[seg1] += 'active';
-  }
+  const actives = {}
+  actives[seg1] = {
+    backgroundColor: "lightblue",
+    borderRadius: "10px",
+  };
     return (
     <>
     <div className="container">
@@ -32,13 +30,18 @@ function Navbar () {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className={actives.list} to="/list">
+                <Link className="nav-link" style={actives.list}  to="/list">
                   AB-list
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className={actives.tmp} to="/tmp">
+                <Link className="nav-link" style={actives.tmp} to="/tmp">
                   tmp
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" style={actives.login}  to="/login">
+                login
                 </Link>
               </li>
             </ul>
