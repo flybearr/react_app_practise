@@ -1,7 +1,12 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import axios from 'axios';
 import {LOGIN_API} from '../config'
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/Authcontext';
+
 function Login() {
+const navigate = useNavigate();
+const {setMyAuth} = useContext(AuthContext);
   const [formData,setFormData] = useState({
     account:'',
     password:'',
@@ -11,20 +16,24 @@ function Login() {
     const id = e.currentTarget.id;
     const val = e.currentTarget.value;
     setFormData({...formData,[id]:val})
-  }
+  };
+  
   const mySubmit = async (e)=>{
     e.preventDefault();
-   const {response} = await  axios.post('http://192.168.35.150:3001/login-api',formData)
-   console.log(response);
-   if(response.success){
-    localStorage.setItem('auth', JSON.stringify(response.auth) );
+   const {data} = await  axios.post(LOGIN_API,formData)
+   console.log(data);
+   if(data.success){
+    localStorage.setItem('auth', JSON.stringify(data.auth) );
     alert('登入成功');
+    setMyAuth({...data.auth,authorised:true});
+    navigate('/');
 
   } else {
     localStorage.removeItem('auth'); // 移除
     alert('登入失敗');
   }
   }
+
     return (
     <>
     <div className="container">

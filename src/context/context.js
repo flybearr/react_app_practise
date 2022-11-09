@@ -5,16 +5,16 @@ export const themes= {
     dark:{
         name : 'dark',
         backgroundColor: 'gray',
-        color : 'white',
+        color : 'black',
     },
     light:{
         name : 'light',
-        backgroundColor: 'white',
-        color : 'black',
+        backgroundColor: 'blue',
+        color : 'white',
     }
 }
 
-const ThemeContext = createContext({...themes.dark});
+const ThemeContext = createContext({});
 
 export default ThemeContext;
 
