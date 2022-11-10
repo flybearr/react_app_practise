@@ -5,6 +5,7 @@ import Navbar from './component/navbar';
 import Login from './pages/login';
 import Mycontext from './context/Mycontext'
 import List_auth from './pages/list_auth';
+import Canvas from './pages/Canvas';
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
         <Route path='/list-auth' element={<List_auth />}/>
         <Route path='/tmp/:sid' element={<Tmp />}/>
         <Route path='/tmp' element={<Tmp />}/>
+        <Route path='/canvas' element={<Canvas />}/>
         <Route path='/login' element={<Login />}/>
       </Routes>
       </Mycontext>
